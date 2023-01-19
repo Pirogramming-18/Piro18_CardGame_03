@@ -5,6 +5,11 @@ class User(models.Model):
     #password = models.CharField(max_length=32)
     #email = models.CharField(max_length=64)
     scoreAll = models.IntegerField()
+    cardlist = []
+    card = models.IntegerField(choices=cardlist)
+
+class GuestUser(models.Model):
+    guestUser= models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Game(models.Model):
     hostUser= models.ForeignKey(User, on_delete=models.CASCADE)
