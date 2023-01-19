@@ -1,11 +1,12 @@
 from django.db import models
 
 class User(models.Model):
-    id = models.CharField(max_length=32)
+    user_id = models.CharField(max_length=32, primary_key=True)
     #password = models.CharField(max_length=32)
     #email = models.CharField(max_length=64)
     scoreAll = models.IntegerField()
-
+    cardList = []
+    
 class Game(models.Model):
     hostUser= models.ForeignKey(User, on_delete=models.CASCADE)
     guestUser= models.ForeignKey(User, on_delete=models.CASCADE)
