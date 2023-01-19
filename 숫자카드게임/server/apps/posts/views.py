@@ -11,7 +11,7 @@ from random import randint
 def makeCard(request, pk, *args, **kwargs):
   
   cardList = []
-  
+  user =User.objects.get(id=pk)
   for i in range(5): #make five integers
     card = randint(1, 10)
     while card in cardList: #not for overlapping
@@ -19,7 +19,7 @@ def makeCard(request, pk, *args, **kwargs):
     cardList.append(card)
   print(cardList)
   
-  User.cardList = cardList
+  user.cardList = cardList
   return render(request, "game/gameStatus.html")
 
 #make criteria for winning the game
