@@ -1,0 +1,30 @@
+{% include "base.html" %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/gameStatus.css' %}" />
+</head>
+<body>
+    <form action="/gameStatus/{{user.user_id}}" method="post">
+        {% csrf_token %}
+    <div class="gameStatus">
+        <h2 class="userVs">user Vs #객체 필요함#</h2>
+        <h3 class="message">숫자가 더 작은 사람이 대결에서 이깁니다</h3>
+        <h4 class="cards">user: #상대가 뽑은 카드 출력#</br>
+            나: #내가 뽑은카드 출력#
+        </h4>
+        <h3 class="result">결과: #승부의 result#</h3>
+        <div class="scores">    
+            <h3 class="score" >점수</h3>
+            <h3 class="score1">:#점수#</h3>
+        </div>
+        <input type="submit" class="btn-list", value="전적 목록" />
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+body {
+    background-color: black;
+    color:white;
+}
+
+
+
+.gameStatus {
+    width:100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userVs {
+    margin: 10px;
+    width:400px;
+    border-bottom: solid 1px rgb(9, 205, 87)
+}
+
+.message {
+    margin: 20px;
+    border-bottom: solid 1px rgb(9, 205, 87);
+    width:400px;
+}
+
+.cards {
+    margin: 20px;
+    width:400px;
+    border-bottom: solid 1px rgb(9, 205, 87)
+}
+
+.result {
+    margin: 20px;
+    width: 400px;
+    border-bottom: solid 1px rgb(9, 205, 87)
+}
+
+.scores {
+    display:flex;
+    flex-direction: row;
+    width: 400px;
+}
+
+.score {
+    margin: 5px;
+    color: rgb(9, 205, 87);
+}
+
+.score1 {
+    margin: 5px;
+}
+
+
+.btn-list {
+    width: 100px;
+    height: 35px;
+    border-color:rgb(9, 205, 87);
+    border-radius: 5px;
+    background-color: black;
+    color: rgb(9, 205, 87);
+    border-width: 3px;
+    margin:15px;
+}
