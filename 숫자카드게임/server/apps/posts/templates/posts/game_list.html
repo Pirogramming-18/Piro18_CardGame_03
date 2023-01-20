@@ -16,38 +16,44 @@
 
 <body>
     <section>
-        <span class="intro">
+        <div class="intro">
             <p>현재 플레이어의 게임 전적을 보여주는 페이지입니다.
                 진행중인 게임은 취소할 수 있어요! 물론 자신이 공격한(=도전장을 내민) 게임만 해당되겠죠?
             </p>
-        </span>
+        </div>
 
-        <h3 class="player">현재 플레이어 {{hostname}}</h3>
+        <h5 class="player"> 현재 플레이어 : {{hostname}}</h5>
+
+
         <span class="glist">
             <br />
             {%for game in user_game%}
             <article class="game-info">
-                <span>{{forloop.counter}}- {{game.hostUser.id}} vs {{game.guestUser.guestUser.id}}</span>
+                <span class="gamevs">
+                    <b>{{forloop.counter}}</b>- {{game.hostUser.id}} <b>VS </b>{{game.guestUser.guestUser.id}}
+                </span>
                 {%if not game.ing %}
                 <!-- 게임이 끝난 상태 -->
-                <span>결과 : {{game.result}}</span>
+                <span class="gamevs">결과 : {{game.result}}</span>
                 {% elif game.ing and game.hostUser.id == hostname %}
                 <!-- 게임이 진행중 & 공격을 한 경우 -->
-                <span>진행중...
+                <span class="gamevs">진행중...
                     <button>
-                        <a style="color:black; text-decoration:none;">게임 취소</a><!-- href 추가해야함 -->
+                        <a style="color:black; text-decoration:none;"><span class="bt">게임
+                                취소</span></a><!-- href 추가해야함 -->
                     </button>
                 </span>
                 {% elif game.ing and game.guestUser.guestUser.id == hostname %}
                 <!-- 게임 진행중 & 공격을 받은 경우 -->
-                <button>
-                    <a style="color:black; text-decoration:none;">반격하기</a><!-- href 추가해야함 -->
-                </button>
+                <span class="gamevs"><button>
+                        <a style="color:black; text-decoration:none;"><span
+                                class="bt">반격하기</span></a><!-- href 추가해야함 -->
+                    </button></span>
                 {%endif%}
-                <button>
-                    <a style="color:black; text-decoration:none;">게임 정보</a><!-- href 추가해야함 -->
-                </button>
-                <hr />
+                <span class="gamevs"><button>
+                        <a style="color:black; text-decoration:none;"><span class="bt">게임
+                                정보</span></a><!-- href 추가해야함 -->
+                    </button></span>
 
             </article>
             {% endfor %}
