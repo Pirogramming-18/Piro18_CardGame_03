@@ -9,6 +9,6 @@
   <a href="/">게임하기</a>
   <a href="{% url 'posts:game_list' %}">전적보기</a>
   {% else %}
-  <a href="{% url 'common:login' %}">게임하기</a>
+  <a href="{% url 'posts:login' %}">게임하기</a>
   {% endif %}
 </div>

@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login
+from .forms import UserForm
 from .models import User,GestUser,Game
 from django.http.request import HttpRequest
 from django.db.models import Q
@@ -9,6 +11,20 @@ def login(request:HttpRequest,*args, **kwargs):
     
 def main(request, *args, **kwargs):
     return render(request, "main.html")
+
+def signup(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserForm()
+    return render(request, 'posts/signup.html', {'form':form})
 
 def game_list(request:HttpRequest,*args, **kwargs): #hostUser 받아와야함.
     hostname='1'

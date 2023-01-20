@@ -2,7 +2,7 @@
 <!---->
 {% include "form_errors.html" %} {% block content %}
 <div class="content_area" id="login_form">
-  <form method="post" class="post-form" action="{% url 'common:login' %}">
+  <form method="post" class="post-form" action="{% url 'posts:login' %}">
     {% csrf_token %} {% include "form_errors.html" %}
     <div class="form-group">
       <label for="username">사용자ID</label>
@@ -27,7 +27,7 @@
     <button type="submit" class="btn">로그인</button>
   </form>
   <div class="new_account">
-    <a href="{% url 'common:signup' %}">새 계정 만들기</a>
+    <a href="{% url 'posts:signup' %}">새 계정 만들기</a>
   </div>
 </div>
 {% endblock %}
