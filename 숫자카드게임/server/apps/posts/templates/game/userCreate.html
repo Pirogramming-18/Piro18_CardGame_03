@@ -1,0 +1,14 @@
+<h1>테스트용 유저 생성</h1>
+
+<form action="" method="post">
+  {% csrf_token %}
+  <input name="user_id" placeholder="아이디" />
+  <br />
+  <input name="scoreAll" placeholder="0" />
+  <br />
+  <input name="card" placeholder="카드" type="number" />
+  <br />
+  <div>
+    <input type="submit" value="저장하기" />
+  </div>
+</form>

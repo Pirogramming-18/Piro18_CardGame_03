@@ -8,10 +8,11 @@ from random import randint
 
 
 #make five random cards
-def makeCard(request, pk, *args, **kwargs):
-  
+def makeCard(request, uid, *args, **kwargs):
+  idxList = [0,1,2,3,4]
   cardList = []
-  user =User.objects.get(id=pk)
+  user =User.objects.get(user_id=uid)
+  print(user)
   for i in range(5): #make five integers
     card = randint(1, 10)
     while card in cardList: #not for overlapping
@@ -19,8 +20,10 @@ def makeCard(request, pk, *args, **kwargs):
     cardList.append(card)
   print(cardList)
   
-  user.cardList = cardList
-  return render(request, "game/gameStatus.html")
+  user.cardList = list(zip(idxList,cardList))
+  user.save()
+  print(user.cardList)
+  return render(request, "game/attack.html", {"user": user})
 
 #make criteria for winning the game
 def makeCriteria(request, pk, *args, **kwargs):
@@ -44,3 +47,23 @@ def makeCriteria(request, pk, *args, **kwargs):
   
   return render(request, "game/gameStatus.html")
 
+    
+def userCreate(request: HttpRequest, *args, **kwargs):
+  print(User.objects.all())
+  if request.method == "POST":
+    User.objects.create(
+      user_id = request.POST["user_id"],
+      scoreAll = request.POST["scoreAll"],
+      card = request.POST["card"],
+    )
+    print(User.objects.all())
+    return redirect("/")
+  return render(request, "game/userCreate.html")
+
+# def cardCreate(request: HttpRequest, uid, *args, **kwargs):
+#   user =User.objects.get(user_id=uid)
+#   if request.method == "POST":
+#     user.card = request.POST["card"]
+#     user.save()
+#     return redirect(f"/attack/{user.user_id}")
+#   return render(request, "attack.html")
