@@ -103,14 +103,14 @@ def GameCreate(request: HttpRequest, uid, *args, **kwargs):
     
     idxList = [0,1,2,3,4]
     cardList = []
-    user =User.objects.get(user_id=uid)
-    users = User.objects.all().exclude(user_id=uid)
+    user =User.objects.get(id=uid)
+    users = User.objects.all().exclude(id=uid)
     # print(users)
     # print(user)
     for i in range(5): #make five integers
         card = randint(1, 10)
         while card in cardList: #not for overlapping
-        card = randint(1, 10)
+            card = randint(1, 10)
         cardList.append(card)
     # print(cardList)
     
@@ -127,7 +127,7 @@ def GameCreate(request: HttpRequest, uid, *args, **kwargs):
         # user.save()
         Game.objects.create(
         hostUser = user,
-        guestUser = User.objects.get(user_id =  request.POST.get("guestUser")),
+        guestUser = User.objects.get(uid =  request.POST.get("guestUser")),
         result = "시작전",
         winner = "",
         ing = False,
@@ -135,8 +135,8 @@ def GameCreate(request: HttpRequest, uid, *args, **kwargs):
         score = 0,
         accept = False,
         )
-        game = Game.objects.get(hostUser=user, guestUser=User.objects.get(user_id =  request.POST.get("guestUser")))
-        print(game.guestUser.user_id)
+        game = Game.objects.get(hostUser=user, guestUser=User.objects.get(id =  request.POST.get("guestUser")))
+        # print(game.guestUser.id)
         return redirect(f"/counterattack/{game.id}",  context=context)
 
     return render(request, "game/attack.html", context=context)
@@ -150,7 +150,7 @@ def counterattack(request: HttpRequest, pk, *args, **kwargs):
     game = Game.objects.get(id=pk)
     hostUser = game.hostUser
     user = game.guestUser
-    print(game.guestUser.user_id)
+    # print(game.guestUser.id)
     for i in range(5): #make five integers
         card = randint(1, 10)
         while card in cardList: #not for overlapping
