@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/attack.css' %}">
 </head>
 <body>
-    <p>내가 고른 카드: </p></br>
-    <button class="btn-attack" onclick="location.href='//'">공격하기!</button>
+    <div class="attack">
+        <div class="selected-card">내가 고른 카드:</div>
+        <div class="choice-guest">공격할 상대는?</div>
+        <button class="btn-attack" onclick="location.href='//'">공격하기!</button>
+    </div>
 </body>
 </html>

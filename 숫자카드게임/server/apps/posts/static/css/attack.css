@@ -1,0 +1,27 @@
+.attack {
+    width:100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selected-card {
+    margin: 10px;
+}
+
+.choice-guest {
+    margin: 20px;
+}
+
+.btn-attack {
+    width: 150px;
+    height: 35px;
+    border-color:rgb(9, 205, 87);
+    border-radius: 5px;
+    background-color: black;
+    color: rgb(9, 205, 87);
+    border-width: 3px;
+    cursor: pointer;
+}
