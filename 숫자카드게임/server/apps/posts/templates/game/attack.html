@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <p>내가 고른 카드: 
-        <select name="">
-            {%for v,k in user.cardList%}
-            <option>{{k}}</option>
-    
-            {%endfor%}
+  </head>
+  <body>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <p>
+        내가 고른 카드:
+        <select name="card">
+          {%for v,k in user.cardList%}
+          <option>{{k}}</option>
+          {%endfor%}
         </select>
-        {% comment %} {{user.card}}</p></br> {% endcomment %}
-    <p>공격할 상대는? 
-        <select name="">
-        {%for u in users%}
-        <option>{{u.user_id}}</option>
+      </p>
 
-        {%endfor%}
-    </select>
-    <button class="btn-attack" onclick="location.href='//'">공격하기!</button>
-    
-</body>
+      <p>
+        공격할 상대는?
+        <select name="guestUser">
+          {%for u in users%}
+          <option>{{u.user_id}}</option>
+          {%endfor%}
+        </select>
+      </p>
 
-
-
+      <div>
+        <input type="submit" , value="공격하기!" />
+      </div>
+    </form>
+  </body>
 </html>

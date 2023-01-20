@@ -13,18 +13,18 @@ def makeCard(request, uid, *args, **kwargs):
   cardList = []
   user =User.objects.get(user_id=uid)
   users = User.objects.all().exclude(user_id=uid)
-  print(users)
-  print(user)
+  # print(users)
+  # print(user)
   for i in range(5): #make five integers
     card = randint(1, 10)
     while card in cardList: #not for overlapping
       card = randint(1, 10)
     cardList.append(card)
-  print(cardList)
+  # print(cardList)
   
   user.cardList = list(zip(idxList,cardList))
   user.save()
-  print(user.cardList)
+  # print(user.cardList)
   context ={
     "user" : user,
     "users" : users,
@@ -67,10 +67,22 @@ def userCreate(request: HttpRequest, *args, **kwargs):
     return redirect("/")
   return render(request, "game/userCreate.html")
 
-# def cardCreate(request: HttpRequest, uid, *args, **kwargs):
-#   user =User.objects.get(user_id=uid)
-#   if request.method == "POST":
-#     user.card = request.POST["card"]
-#     user.save()
-#     return redirect(f"/attack/{user.user_id}")
-#   return render(request, "attack.html")
+def GameCreate(request: HttpRequest, uid, *args, **kwargs):
+  user =User.objects.get(user_id=uid)
+  if request.method == "POST":
+    user.card = request.POST["card"]
+    user.save()
+    Game.objects.create(
+      hostUser = user,
+      guestUser = request.POST["guestUser"],
+      result = None,
+      winner = None,
+      ing = None,
+      standard = None,
+      score = 0,
+      accept = False,
+    )
+    print(Game.objects.all())
+    return redirect(f"/attack/{user.user_id}")
+  print("error")
+  return render(request, "attack.html")

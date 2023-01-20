@@ -13,8 +13,8 @@ class Game(models.Model):
     guestUser= models.ForeignKey(User, on_delete=models.CASCADE, related_name="defense")
     result = models.CharField(max_length=8)
     winner = models.CharField(max_length=32)
-    ing=models.BooleanField()
+    ing=models.BooleanField(default=False)
     standard=models.BooleanField() #높은쪽을 True
     score = models.IntegerField()
-    accept = models.BooleanField()
+    accept = models.BooleanField(default= False)
 
