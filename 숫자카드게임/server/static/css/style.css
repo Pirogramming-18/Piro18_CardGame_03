@@ -1,0 +1,98 @@
+@import "reset.css";
+
+:root {
+    --main-color: rgb(53, 165, 12);
+    --main-bg-color: rgb(35, 35, 35);
+}
+
+
+body {
+    background-color: var(--main-bg-color);
+    color: white;
+
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+header a {
+    padding: 1rem;
+}
+
+.header_left a {
+    color: var(--main-color);
+    font-size: 1.6rem;
+}
+
+.header_right a {
+    color: var(--white);
+    font-size: 1rem;
+}
+
+footer {
+    font-size: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: #777;
+}
+
+footer p {
+    padding: 0.2rem;
+}
+
+
+
+/* main 로그인 전후 페이지 */
+
+.content_area {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#main_page i {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+#main_page h1 {
+    font-size: 2rem;
+    color: white;
+    margin-top: 1rem;
+}
+
+#main_page a {
+    font-size: 1.4rem;
+    color: var(--main-color);
+    margin-top: 1rem;
+    padding: 1rem;
+    border: solid 3px var(--main-color);
+    border-radius: 5px;
+}
+
+.new_account a {
+    color: white;
+}
+
+.login_btn {
+    background-color: #777;
+}
