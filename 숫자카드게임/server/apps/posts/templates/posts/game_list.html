@@ -50,11 +50,11 @@
                                 class="bt">반격하기</span></a><!-- href 추가해야함 -->
                     </button></span>
                 {%endif%}
-                <span class="gamevs"><button>
-                        <a style="color:black; text-decoration:none;"><span class="bt">게임
-                                정보</span></a><!-- href 추가해야함 -->
-                    </button></span>
-
+                <span class="gamevs">
+                    <button>
+                        <a href="{% url 'posts:game_info' game.pk %}"> " style="color:black; text-decoration:none;">
+                            <span class="bt">게임정보</span>
+                        </a><!-- href 추가해야함 --></button></span>
             </article>
             {% endfor %}
         </span>

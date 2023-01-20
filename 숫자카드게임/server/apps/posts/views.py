@@ -6,6 +6,7 @@ from django.db.models import Q
 def login(request:HttpRequest,*args, **kwargs):
     hostUser='1' #호스트 유저 아이디 받아오는곳!
     return(hostUser)
+
 def game_list(request:HttpRequest,*args, **kwargs): #hostUser 받아와야함.
     hostname='1'
     game_list=Game.objects.all()
@@ -25,11 +26,13 @@ def lanking(request:HttpRequest,*args, **kwargs):
         'userlanking':userlanking,
         }       
     return render(request,"posts/game_lanking.html",context=context)
+
 def game_info(request, pk, *args, **kwargs) :
     game = Game.objects.get(pk=pk)
-        "game" : game,
     context = {
+        "game" : game,
     }
     if game.ing == True:
-        return render(request, "games/game_info_progress.html", context=context )
+        return render(request, "posts/game_info_progress.html", context=context )
     elif game.ing == False:
+        return render(request, "posts/game_info_result.html", context=context)
