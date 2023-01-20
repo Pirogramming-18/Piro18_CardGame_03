@@ -10,18 +10,21 @@
     <link rel="stylesheet" href="{% static 'css/counterattack.css' %}" />
   </head>
   <body>
-    <div class="counterattack">
-      <h3 class="message">#객체 필요함# 에게 반격하세요!</h3>
-      <div class="selected-card">
-        내가 고른 카드:
-        <select name="">
-          {%for v,k in user.cardList%}
-          <option>{{k}}</option>
+    <form action="/attack/{{user.user_id}}" method="post">
+      {% csrf_token %}
+      <div class="counterattack">
+        <h3 class="message">#객체 필요함# 에게 반격하세요!</h3>
+        <div class="selected-card">
+          내가 고른 카드:
+          <select name="{{user.card}">
+            {%for v,k in user.cardList%}
+            <option>{{k}}</option>
 
-          {%endfor%}
-        </select>
+            {%endfor%}
+          </select>
+        </div>
+        <input type="submit" class="btn-counterattack" , value="반격하기!" />
       </div>
-      <input type="submit" class="btn-counterattack" , value="반격하기!" />
-    </div>
+    </form>
   </body>
 </html>

@@ -1,0 +1,31 @@
+{% comment %} {% include "base.html" %}  {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/gameStatus.css' %}" />
+</head>
+<body>
+
+    <div class="gameStatus">
+        <h2 class="userVs">{{hostUser.user_id}} Vs {{guestUser.user_id}}</h2>
+        <h3 class="message">숫자가 더 {{rule}} 사람이 대결에서 이깁니다</h3>
+        <h4 class="cards">{{guestUser.user_id}}: {{guestUser.card}}</br>
+            나: {{hostUser.card}}
+        </h4>
+        <h3 class="result">결과: {{game.result}}</h3>
+        <div class="scores">    
+            <h3 class="score" >점수</h3>
+            <h3 class="score1">:{{hostUser.card}}</h3>
+        </div>
+        {% comment %} <a href="" class="btn-list">전적목록</a> {% endcomment %}
+        <input type="submit" class="btn-list", value="전적 목록" />
+    </div>
+
+</body>
+</html>

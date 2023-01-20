@@ -33,54 +33,5 @@
         <input type="submit" class="btn-attack", value="공격하기!" />
     </div>
     </form> 
-    {% comment %} <form action="/attack/{{user.user_id}}" method="POST">
-        {% csrf_token %}
-        <div class="attack">
-          내가 고른 카드:
-          <select name="card">
-            {%for v, k in user.cardList%}
-            <option>{{k}}</option>
-            {%endfor%}
-          </select>
-        </p>
-  
-        <p>
-          공격할 상대는?
-          <select name="guestUser">
-            {%for u in users%}
-            <option>{{u.user_id}}</option>
-            {%endfor%}
-          </select>
-        </div>
-        <div>
-          <input type="submit" , value="공격하기!" />
-        </div>
-      </form> {% endcomment %}
-
-
-{% comment %} 
- <form action="/attack/{{user.user_id}}" method="POST">
-      {% csrf_token %}
-      <p>
-        내가 고른 카드:
-        <select name="card">
-          {%for v, k in user.cardList%}
-          <option>{{k}}</option>
-          {%endfor%}
-        </select>
-      </p>
-
-      <p>
-        공격할 상대는?
-        <select name="guestUser">
-          {%for u in users%}
-          <option>{{u.user_id}}</option>
-          {%endfor%}
-        </select>
-      </p>
-      <div>
-        <input type="submit" , value="공격하기!" />
-      </div>
-    </form> {% endcomment %}
   </body>
 </html>
