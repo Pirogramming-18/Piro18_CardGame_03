@@ -1,19 +1,16 @@
 from django.db import models
 
 class User(models.Model):
-    id = models.CharField(max_length=32)
+    user_id = models.CharField(max_length=32)
     #password = models.CharField(max_length=32)
     #email = models.CharField(max_length=64)
     scoreAll = models.IntegerField()
-    cardlist = []
-    card = models.IntegerField(choices=cardlist)
+    card = models.IntegerField()
 
-class GuestUser(models.Model):
-    guestUser= models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Game(models.Model):
-    hostUser= models.ForeignKey(User, on_delete=models.CASCADE)
-    guestUser= models.ForeignKey(User, on_delete=models.CASCADE)
+    hostUser= models.ForeignKey(User, on_delete=models.CASCADE, related_name="attack")
+    guestUser= models.ForeignKey(User, on_delete=models.CASCADE, related_name="defense")
     result = models.CharField(max_length=8)
     winner = models.CharField(max_length=32)
     ing=models.BooleanField()

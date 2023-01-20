@@ -10,9 +10,25 @@
 </head>
 <body>
     <div class="attack">
-        <div class="selected-card">내가 고른 카드:</div>
-        <div class="choice-guest">공격할 상대는?</div>
+        <div class="selected-card">내가 고른 카드:
+            <select name="">
+                {%for v,k in user.cardList%}
+                <option>{{k}}</option>
+        
+                {%endfor%}
+            </select>
+        </div>
+        <div class="choice-guest">공격할 상대는?
+            <select name="">
+                {%for u in users%}
+                <option>{{u.user_id}}</option>
+        
+                {%endfor%}
+            </select>
+        </div>
         <button class="btn-attack" onclick="location.href='//'">공격하기!</button>
     </div>
 </body>
 </html>
+
+
