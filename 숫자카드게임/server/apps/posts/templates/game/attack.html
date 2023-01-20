@@ -5,14 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/attack.css' %}"> {% endcomment %}
   </head>
   <body>
-    <form action="" method="POST">
+    {% comment %} <form action="/attack/{{user.user_id}}" method="POST">
+        {% csrf_token %}
+        <div class="attack">
+          내가 고른 카드:
+          <select name="card">
+            {%for v, k in user.cardList%}
+            <option>{{k}}</option>
+            {%endfor%}
+          </select>
+        </p>
+  
+        <p>
+          공격할 상대는?
+          <select name="guestUser">
+            {%for u in users%}
+            <option>{{u.user_id}}</option>
+            {%endfor%}
+          </select>
+        </div>
+        <div>
+          <input type="submit" , value="공격하기!" />
+        </div>
+      </form> {% endcomment %}
+
+
+
+ <form action="/attack/{{user.user_id}}" method="POST">
       {% csrf_token %}
       <p>
         내가 고른 카드:
         <select name="card">
-          {%for v,k in user.cardList%}
+          {%for v, k in user.cardList%}
           <option>{{k}}</option>
           {%endfor%}
         </select>
@@ -26,7 +53,6 @@
           {%endfor%}
         </select>
       </p>
-
       <div>
         <input type="submit" , value="공격하기!" />
       </div>

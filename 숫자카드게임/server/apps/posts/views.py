@@ -41,16 +41,16 @@ def makeCriteria(request, pk, *args, **kwargs):
   guestCard = game.guestUser.card
   
   if idx == 0:
-    game.result = hostCard > guestCard
+    game.result = "승리" if hostCard > guestCard else "패배"
   elif idx == 1:
-    game.result = hostCard < guestCard
+    game.result = "승리" if hostCard < guestCard else "패배"
   #criteria for winning is close to three
   elif idx == 2:
-    game.result = abs(hostCard - 3) < abs(guestCard - 3)
+    game.result = "승리" if abs(hostCard - 3) < abs(guestCard - 3) else "패배"
   elif idx == 3:
-    game.result = abs(hostCard - 7) < abs(guestCard - 7)
+    game.result = "승리" if abs(hostCard - 7) < abs(guestCard - 7) else "패배"
     
-  game.winner = game.hostUser if game.result else game.guestUser
+  game.winner = game.hostUser if game.result =="승리" else game.guestUser
   
   return render(request, "game/gameStatus.html")
 
@@ -59,7 +59,7 @@ def userCreate(request: HttpRequest, *args, **kwargs):
   print(User.objects.all())
   if request.method == "POST":
     User.objects.create(
-      user_id = request.POST["user_id"],
+      userId = request.POST["userId"],
       scoreAll = request.POST["scoreAll"],
       card = request.POST["card"],
     )
@@ -67,8 +67,20 @@ def userCreate(request: HttpRequest, *args, **kwargs):
     return redirect("/")
   return render(request, "game/userCreate.html")
 
+def scoreUpdate(request: HttpRequest, pk, *args, **kwargs):
+  game = Game.objects.get(id=pk)
+  
+  if game.result == "승리":
+    game.hostUser.scoreAll += game.hostUser.card
+    game.guestUser.scoreAll -= game.hostUser.card
+  else:
+    game.hostUser.scoreAll -= game.hostUser.card
+    game.hostUser.scoreAll += game.hostUser.card
+  return redirect("/")
+
+#수정 필요
 def GameCreate(request: HttpRequest, uid, *args, **kwargs):
-  user =User.objects.get(user_id=uid)
+  user =User.objects.get(userId=uid)
   if request.method == "POST":
     user.card = request.POST["card"]
     user.save()
@@ -82,7 +94,8 @@ def GameCreate(request: HttpRequest, uid, *args, **kwargs):
       score = 0,
       accept = False,
     )
-    print(Game.objects.all())
-    return redirect(f"/attack/{user.user_id}")
+    game = Game.objects.get(hostUser=user)
+    
+    return redirect(f"/counterattack/{game.guestUser}")
   print("error")
   return render(request, "attack.html")
