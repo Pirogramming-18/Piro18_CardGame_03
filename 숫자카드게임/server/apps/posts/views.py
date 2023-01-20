@@ -1,3 +1,5 @@
 from django.shortcuts import render
+# from server.apps.posts.models import User, GestUser, Game
 
-# Create your views here.
+def main(request, *args, **kwargs):
+    return render(request, "main.html")
