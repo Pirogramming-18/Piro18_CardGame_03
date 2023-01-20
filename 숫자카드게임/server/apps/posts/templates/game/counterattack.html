@@ -1,15 +1,27 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <p>에게 반격하세요!</p></br>
+    <link rel="stylesheet" href="{% static 'css/counterattack.css' %}" />
+  </head>
+  <body>
+    <div class="counterattack">
+      <h3 class="message">#객체 필요함# 에게 반격하세요!</h3>
+      <div class="selected-card">
+        내가 고른 카드:
+        <select name="">
+          {%for v,k in user.cardList%}
+          <option>{{k}}</option>
 
-    <p>내가 고른 카드</p></br>
-    <button class="btn-attack" onclick="location.href='//'">반격하기!</button>
-</body>
+          {%endfor%}
+        </select>
+      </div>
+      <input type="submit" class="btn-counterattack" , value="반격하기!" />
+    </div>
+  </body>
 </html>

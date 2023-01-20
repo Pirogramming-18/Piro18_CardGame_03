@@ -32,6 +32,31 @@ def makeCard(request, uid, *args, **kwargs):
   
   return render(request, "game/attack.html", context=context)
 
+#make five random cards
+def makeCard2(request, uid, *args, **kwargs):
+  idxList = [0,1,2,3,4]
+  cardList = []
+  user =User.objects.get(user_id=uid)
+  users = User.objects.all().exclude(user_id=uid)
+  # print(users)
+  # print(user)
+  for i in range(5): #make five integers
+    card = randint(1, 10)
+    while card in cardList: #not for overlapping
+      card = randint(1, 10)
+    cardList.append(card)
+  # print(cardList)
+  
+  user.cardList = list(zip(idxList,cardList))
+  user.save()
+  # print(user.cardList)
+  context ={
+    "user" : user,
+    "users" : users,
+  }
+  
+  return render(request, "game/counterattack.html", context=context)
+
 #make criteria for winning the game
 def makeCriteria(request, pk, *args, **kwargs):
   criteriaList = [True, False, 3 , 7]
@@ -94,6 +119,7 @@ def GameCreate(request: HttpRequest, uid, *args, **kwargs):
       score = 0,
       accept = False,
     )
+    print(user.card)
     game = Game.objects.get(hostUser=user)
     
     return redirect(f"/counterattack/{game.guestUser}")
