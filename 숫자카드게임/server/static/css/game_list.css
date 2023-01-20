@@ -1,0 +1,45 @@
+section,
+html {
+  background-color: #1d201f;
+  color: white;
+}
+
+.intro {
+  color: gray;
+  margin: 0 0 4rem 2rem;
+}
+
+h5 {
+  border-bottom: 1px solid #a5ca3f;
+  margin: 0 2rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  font-weight: 700;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  margin: 2rem;
+}
+
+.gamevs {
+  width: 170px;
+  font-weight: 600;
+}
+
+b {
+  color: #a5ca3f;
+  font-size: large;
+}
+
+button {
+  border: 1px solid #a5ca3f;
+  background-color: #1d201f;
+  border-radius: 10px;
+}
+
+.bt {
+  color: #a5ca3f;
+}
