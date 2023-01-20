@@ -7,8 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    <p>내가 고른 카드: <input name=card />{{user.card}}</p></br>
+    <p>내가 고른 카드: 
+        <select name="">
+            {%for v,k in user.cardList%}
+            <option>{{k}}</option>
+    
+            {%endfor%}
+        </select>
+        {% comment %} {{user.card}}</p></br> {% endcomment %}
+    <p>공격할 상대는? 
+        <select name="">
+        {%for u in users%}
+        <option>{{u.user_id}}</option>
+
+        {%endfor%}
+    </select>
     <button class="btn-attack" onclick="location.href='//'">공격하기!</button>
+    
 </body>
 
 

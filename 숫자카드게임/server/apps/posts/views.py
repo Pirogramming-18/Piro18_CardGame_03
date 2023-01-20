@@ -12,6 +12,8 @@ def makeCard(request, uid, *args, **kwargs):
   idxList = [0,1,2,3,4]
   cardList = []
   user =User.objects.get(user_id=uid)
+  users = User.objects.all().exclude(user_id=uid)
+  print(users)
   print(user)
   for i in range(5): #make five integers
     card = randint(1, 10)
@@ -23,7 +25,12 @@ def makeCard(request, uid, *args, **kwargs):
   user.cardList = list(zip(idxList,cardList))
   user.save()
   print(user.cardList)
-  return render(request, "game/attack.html", {"user": user})
+  context ={
+    "user" : user,
+    "users" : users,
+  }
+  
+  return render(request, "game/attack.html", context=context)
 
 #make criteria for winning the game
 def makeCriteria(request, pk, *args, **kwargs):

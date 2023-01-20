@@ -16,4 +16,5 @@ class Game(models.Model):
     ing=models.BooleanField()
     standard=models.BooleanField() #높은쪽을 True
     score = models.IntegerField()
+    accept = models.BooleanField()
 
