@@ -7,13 +7,13 @@
     <div>
       <span
         >또는
-        <a href="{% url 'common:login' %}" class="login_btn"
+        <a href="{% url 'posts:login' %}" class="login_btn"
           >로그인 하기</a
         ></span
       >
     </div>
   </div>
-  <form method="post" class="post-form" action="{% url 'common:signup' %}">
+  <form method="post" class="post-form" action="{% url 'posts:signup' %}">
     {% csrf_token %} {% include "form_errors.html" %}
     <div class="form-group">
       <label for="username">사용자 이름</label>
