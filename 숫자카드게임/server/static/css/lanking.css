@@ -1,0 +1,38 @@
+* {
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.user {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  margin: 1rem;
+}
+
+button {
+  border: 1px solid #a5ca3f;
+  background-color: #1d201f;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.bt {
+  color: #a5ca3f;
+}
+
+main {
+  padding: 3rem;
+  background-color: #131212;
+  box-shadow: 5px 5px 5px 5px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
