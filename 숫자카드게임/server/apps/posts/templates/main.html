@@ -1,4 +1,4 @@
-{% include "base.html" %}  
+{% include "base.html" %}
 <div class="content_area" id="main_page">
   <i class="fa-regular fa-lightbulb"></i>
   <h1>전 세계 피로그래머와</h1>
@@ -7,7 +7,7 @@
   </br>
   <p>{{ user.username }}님이 로그인 중</p>
   <a href="/">게임하기</a>
-  <a href="/">전적보기</a>
+  <a href="{% url 'posts:game_list' %}">전적보기</a>
   {% else %}
   <a href="{% url 'common:login' %}">게임하기</a>
   {% endif %}

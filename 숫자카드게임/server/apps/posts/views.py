@@ -6,6 +6,7 @@ from django.db.models import Q
 def login(request:HttpRequest,*args, **kwargs):
     hostUser='1' #호스트 유저 아이디 받아오는곳!
     return(hostUser)
+    
 def main(request, *args, **kwargs):
     return render(request, "main.html")
 

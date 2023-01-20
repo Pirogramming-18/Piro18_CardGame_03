@@ -21,7 +21,8 @@
         <div class="user"> {{forloop.counter}}등 {{user.id}}님! 총 점수: {{user.scoreAll}}</div>
         {%endfor%}
         <button>
-            <a style="color:black; text-decoration:none;"><span class="bt">전적 목록</span></a><!-- href 추가해야함 -->
+            <a href="{% url 'posts:game_list' %}" style="color:black; text-decoration:none;"><span class="bt">전적
+                    목록</span></a><!-- href 추가해야함 -->
         </button>
     </main>
 </body>
