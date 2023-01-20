@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임완료 게임정보</title>
+</head>
+<body>
+    <main>
+        <p>
+            {{ game.id }} - {{ game.guestUser }} VS {{ game.hostUser }} <!--순서 확인!-->
+        </p>
+
+        <div>
+            진행중...
+            <br>
+            <a href="">게임 취소</a> <!--게임취소 url 추가 필요-->
+        </div>
+
+        <div>
+            <a href="">전적 목록</a> <!--전적목록 url 추가 필요-->
+        </div>
+    </main>
+</body>
+</html>
