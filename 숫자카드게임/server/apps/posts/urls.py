@@ -1,7 +1,8 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from server.apps.posts.views import main
+from server.apps.posts.views import main, GameCreate, counterattack, gameStart
 from . import views
+
 
 app_name='posts' #네임 스페이스
 urlpatterns= [
@@ -11,5 +12,10 @@ urlpatterns= [
     path('signup/', views.signup, name='signup'),
     path("posts/gamelist", views.game_list, name='game_list'),
     path("posts/lanking", views.lanking, name='game_lanking'),
-    path('posts/gameinfo/<int:pk>', views.game_info, name='game_info')
+    path('posts/gameinfo/<int:pk>', views.game_info, name='game_info'),
+    path("gameStatus/<int:pk>", gameStart),
+    path("attack/<str:uid>",  GameCreate, name="attack"),
+    path("counterattack/<int:pk>", counterattack, name="counterattack"),
+
+    
 ]
