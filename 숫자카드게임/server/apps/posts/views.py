@@ -29,7 +29,9 @@ def lanking(request:HttpRequest,*args, **kwargs):
 
 def game_info(request, pk, *args, **kwargs) :
     game = Game.objects.get(pk=pk)
+    user='1'
     context = {
         "game" : game,
+        "user":user,
     }
-    return render(request, "games/game_info.html", context=context )
+    return render(request, "posts/game_info.html", context=context )

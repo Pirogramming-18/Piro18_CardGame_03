@@ -7,7 +7,9 @@ class User(models.Model):
     scoreAll = models.IntegerField()
     card = models.IntegerField()
 
+class GestUser(models.Model):
     guestUser= models.ForeignKey(User, on_delete=models.CASCADE,primary_key=True)
+
 class Game(models.Model):
     hostUser= models.ForeignKey(User, on_delete=models.CASCADE)
     guestUser= models.ForeignKey(GestUser, on_delete=models.CASCADE)
@@ -16,3 +18,4 @@ class Game(models.Model):
     ing=models.BooleanField()
     standard=models.BooleanField() #높은쪽을 True
     score = models.IntegerField()
+
