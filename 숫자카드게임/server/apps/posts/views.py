@@ -99,3 +99,12 @@ def GameCreate(request: HttpRequest, uid, *args, **kwargs):
     return redirect(f"/counterattack/{game.guestUser}")
   print("error")
   return render(request, "attack.html")
+
+def showstate(request, pk, *args, **kwargs):
+    game = Game.objects.get(id = pk)
+    hostCard = game.hostUser.card
+    guestCard = game.guestUser.card
+    if hostCard is not None and guestCard is None: # 게임 진행중..
+        ing = True  #list.html 에서 ing를 받아옴
+    elif hostCard is None and guestCard is not None: # 반격하기
+        ing= False  #list.html 에서 ing을 받아옴
