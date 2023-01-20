@@ -1,0 +1,68 @@
+.game-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+main {
+    background-color: black;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 580px;
+    height: 400px;
+}
+
+hr {
+    border: none;   
+    border-top: 1px solid #a5ca3f;    
+    overflow: visible;   
+}
+
+hr:after {
+    display: inline block;
+    content: "";
+    position: relative;      
+    padding: 0 250px;  
+}
+
+span {
+    margin-bottom: 5px;
+    font-weight: bolder;
+    padding-left: 3px;
+    font-size: large;
+}
+
+.game-result, .game-progress {
+    padding: 10px;
+    padding-left: 20px !important;
+    text-align: left !important;
+}
+
+#game-user-id {
+    padding-top: 26px !important;
+    padding-left: 20px !important;
+}
+
+.game-list-btn, .game-cancel-btn, .game-fight-btn {
+    width: 100px;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 1px;
+    border-color: #a5ca3f;
+    font-weight: bolder;
+    align-self: center;
+}
+
+
+#vs {
+    font-size: larger;
+}
+
+.game-progress-host {
+    align-self: center;
+}
